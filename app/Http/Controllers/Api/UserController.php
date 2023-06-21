@@ -88,6 +88,7 @@ class UserController extends Controller
     {
         //
         $dataUsers =  User::find($id);
+
         if(empty($dataUsers)){
             return response()->json([
                 'status' => false,
@@ -130,5 +131,20 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+        $dataUsers =  User::find($id);
+
+        if(empty($dataUsers)){
+            return response()->json([
+                'status' => false,
+                'message' => 'Data tidak ditemukan'
+            ], 404);
+        }
+
+        $post = $dataUsers->delete();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Sukses melakukan delete data'
+        ]);
     }
 }

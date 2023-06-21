@@ -30,3 +30,6 @@ Route::post('users', [UserController::class, 'store']);
 
 // Update Users Api
 Route::put('users/{id}', [UserController::class, 'update']);
+
+// Delete Users Api
+Route::delete('users/{id}', [UserController::class, 'destroy']);
